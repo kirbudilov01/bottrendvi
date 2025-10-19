@@ -1,24 +1,28 @@
-import asyncio, os
+import asyncio
+import os
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from dotenv import load_dotenv
+
+# Роуты/логика
 from .handlers import router
 
+# Загружаем .env (чтобы BOT_TOKEN и ссылки подтянулись)
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-if not BOT_TOKEN:
-    # Не паникуем в GitHub, но для запуска понадобится токен
-    print("WARNING: BOT_TOKEN is empty. Fill it in .env on the server or local env.")
 
 async def main():
     if not BOT_TOKEN:
-        # Чтобы файл импортировался без аварий — не запускаем polling без токена.
-        print("Bot is not started because BOT_TOKEN is missing.")
+        # Запуск без токена не имеет смысла — просто аккуратно завершаемся.
+        print("BOT_TOKEN отсутствует. Укажи его в .env")
         return
+
     bot = Bot(BOT_TOKEN, parse_mode=ParseMode.HTML)
     dp = Dispatcher()
     dp.include_router(router)
+
+    print("Bot is starting polling…")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
