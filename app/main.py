@@ -2,23 +2,24 @@ import asyncio
 import os
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
+from aiogram.client.default import DefaultBotProperties
 from dotenv import load_dotenv
 
-# Роуты/логика
 from .handlers import router
 
-# Загружаем .env (чтобы BOT_TOKEN и ссылки подтянулись)
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 
 async def main():
     if not BOT_TOKEN:
-        # Запуск без токена не имеет смысла — просто аккуратно завершаемся.
         print("BOT_TOKEN отсутствует. Укажи его в .env")
         return
 
-    bot = Bot(BOT_TOKEN, parse_mode=ParseMode.HTML)
+    bot = Bot(
+        BOT_TOKEN,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+    )
     dp = Dispatcher()
     dp.include_router(router)
 
