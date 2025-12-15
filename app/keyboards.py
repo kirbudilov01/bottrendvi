@@ -19,6 +19,7 @@ def main_menu_kb(L, ABOUT_URL: str, LOGIN_URL: str) -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text=L["shorts"], callback_data="menu:shorts")],
         [InlineKeyboardButton(text=L["utils"], callback_data="menu:utils")],
         [InlineKeyboardButton(text=L["about_us"], callback_data="menu:aboutus")],
+        [InlineKeyboardButton(text=L["my_id_btn"], callback_data="menu:myid")],
     ])
 
 def utils_kb(L, SUPPORT_URL: str) -> InlineKeyboardMarkup:

@@ -103,6 +103,21 @@ async def utils_invite(cb: CallbackQuery):
     await cb.message.edit_text(link, reply_markup=utils_kb(Ld, SUPPORT_URL))
     await cb.answer()
 
+@router.callback_query(F.data == "menu:myid")
+async def menu_myid(cb: CallbackQuery):
+    users = _load_users()
+    lang = ensure_user(users, cb.from_user.id)["lang"]
+    Ld = TEXTS[lang]
+
+    await cb.message.edit_text(
+        Ld["my_id_text"].format(id=cb.from_user.id),
+        reply_markup=main_menu_kb(
+            Ld,
+            *resolve_urls_by_lang(lang),
+        ),
+    )
+    await cb.answer()
+
 @router.callback_query(F.data == "utils:pay")
 async def utils_pay(cb: CallbackQuery):
     users = _load_users()

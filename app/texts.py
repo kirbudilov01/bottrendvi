@@ -29,6 +29,8 @@ TEXTS = {
         "no_keys": "Раздел «Мои ключи» появится после запуска сервиса.",
         "keys_header": "Ваши ключи:",
         "delete": "Удалить",
+        "my_id_btn": "Мой Код",
+        "my_id_text": "Ваш Код:\n<code>{id}</code>\n\nНажмите, чтобы скопировать.",
     },
     "en": {
         "choose_lang": "Choose language / Выберите язык / 选择语言",
@@ -58,6 +60,8 @@ TEXTS = {
         "no_keys": "“My keys” will be available once the service is live.",
         "keys_header": "Your keys:",
         "delete": "Delete",
+        "my_id_btn": "My ID",
+        "my_id_text": "Your chat ID:\n<code>{id}</code>\n\nTap to copy.",
     },
     "zh": {
         "choose_lang": "选择语言 / Choose language / Выберите язык",
@@ -87,5 +91,7 @@ TEXTS = {
         "no_keys": "“我的密钥”将在服务上线后开放。",
         "keys_header": "你的密钥：",
         "delete": "删除",
+        "my_id_btn": "我的 ID",
+        "my_id_text": "你的 chat ID：\n<code>{id}</code>\n\n点击即可复制。",
     },
 }
